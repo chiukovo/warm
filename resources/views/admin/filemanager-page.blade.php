@@ -10,7 +10,7 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <iframe src="/filemanager" width="100%" height="800px">
+        <iframe src="/admin/filemanager" style="width: 100%; height: 600px; overflow: hidden; border: none;">
     </div>
 </div>
 @endsection

@@ -24,6 +24,8 @@
   <script src="/dist/js/jquery.min.js"></script>
   <script src="/dist/js/vue.min.js"></script>
   <script src="/dist/js/bluebird.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+  <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
   <style>
     [v-cloak] {
       display: none;
@@ -92,6 +94,21 @@
         "preventDuplicates": false,
         "preventDuplicates": false,
         "newestOnTop": true
+      }
+
+      const editor = document.querySelector('.editor')
+      const lfm = document.querySelector('.lfm')
+
+      if (editor != null) {
+        var options = {
+          filebrowserImageBrowseUrl: '/admin/filemanager',
+        };
+
+        CKEDITOR.replace(editor, options);
+      }
+
+      if (lfm != null) { 
+        $('.lfm').filemanager();
       }
     });
   </script>

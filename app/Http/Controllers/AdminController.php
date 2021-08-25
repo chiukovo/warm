@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LineMessage;
 use Request, Auth, DB, Hash, Storage;
 
 class AdminController extends Controller

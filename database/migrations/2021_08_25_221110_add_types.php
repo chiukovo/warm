@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAbout extends Migration
+class AddTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,14 @@ class AddAbout extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('pid');
+            $table->text('img_url');
+            $table->text('content');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class AddAbout extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('types');
     }
 }
