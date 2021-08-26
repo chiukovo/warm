@@ -50,7 +50,7 @@
             <div class="form-group row">
               <label class="col-md-1 m-t-15">說明</label>
               <div class="col-sm-12 col-md-10">
-              <textarea name="content" class="editor" class="form-control" style="height: 300px"></textarea>
+              <textarea id="content" name="content" class="editor" class="form-control" style="height: 300px"></textarea>
               </div>
             </div>
           </div>
@@ -70,7 +70,13 @@
   $(function() {
     $('#save').click(function(e) {
       e.preventDefault();
-      const data = $('#form').serialize();
+      const content = CKEDITOR.instances.content.getData()
+      const data = {
+        name: $('input[name=name]').val(),
+        img_url: $('input[name=img_url]').val(),
+        content: content,
+      }
+
       $.ajax({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

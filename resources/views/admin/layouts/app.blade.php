@@ -31,6 +31,20 @@
       display: none;
     }
   </style>
+
+  <script>
+    $(function() {
+      const editor = document.querySelector('.editor')
+
+      if (editor != null) {
+        var options = {
+          filebrowserImageBrowseUrl: '/admin/filemanager',
+        }
+
+        CKEDITOR.replace(editor, options);
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -96,16 +110,7 @@
         "newestOnTop": true
       }
 
-      const editor = document.querySelector('.editor')
       const lfm = document.querySelector('.lfm')
-
-      if (editor != null) {
-        var options = {
-          filebrowserImageBrowseUrl: '/admin/filemanager',
-        };
-
-        CKEDITOR.replace(editor, options);
-      }
 
       if (lfm != null) { 
         $('.lfm').filemanager();

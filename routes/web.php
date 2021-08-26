@@ -44,5 +44,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('types/list', 'App\Http\Controllers\TypesController@list');
     Route::get('types/edit', 'App\Http\Controllers\TypesController@edit')->name('typesEdit');
     Route::get('types/create', 'App\Http\Controllers\TypesController@edit')->name('typesCreate');
+    Route::post('types/doEdit', 'App\Http\Controllers\TypesController@doEdit');
 });
 
