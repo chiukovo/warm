@@ -48,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($adminData as $data)
+                                @foreach($datas['data'] as $data)
                                 <tr>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->account }}</td>
@@ -66,6 +66,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @include('admin.layouts.paginate')
                     </div>
                 </div>
             </div>

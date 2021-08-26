@@ -39,6 +39,7 @@ class AdminController extends Controller
 
         $account = $data['account'] ?? '';
         $name = $data['name'] ?? '';
+        $page = Request::input('page', 1);
 
         $filters = [];
         
@@ -50,20 +51,22 @@ class AdminController extends Controller
             $filters['account'] = $account;
         }
 
-        $adminData = DB::table('admin_users');
+        $datas = DB::table('admin_users');
 
         if (!empty($filters)) {
-            $adminData->where($filters);
+            $datas->where($filters);
         }
 
-        $adminData = $adminData
-            ->get()
+        $datas = $datas
+            ->select()
+            ->paginate(config('app.pageSize'))
             ->toArray();
 
         return view('admin/adminUser/list', [
-            'adminData' => $adminData,
+            'datas' => $datas,
             'account' => $account,
             'name' => $name,
+            'page' => $page,
         ]);
     }
 
@@ -74,6 +77,7 @@ class AdminController extends Controller
         
         $isEdit = false;
         $id = Request::input('id', '');
+        $page = Request::input('page', 1);
         $account = '';
         $name = '';
 
