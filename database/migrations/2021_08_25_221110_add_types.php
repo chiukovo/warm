@@ -17,6 +17,7 @@ class AddTypes extends Migration
             $table->id();
             $table->string('name');
             $table->integer('pid');
+            $table->integer('level')->default(1);
             $table->integer('status')->default(1);
             $table->text('img_url');
             $table->text('content');
