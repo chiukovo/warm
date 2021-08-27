@@ -9,9 +9,23 @@ class TypesController extends Controller
     public function list()
     {
         $name = Request::input('name', '');
+        $pid = Request::input('pid', 0);
         $page = Request::input('page', 1);
-
+        $pidData = [];
         $filters = [];
+
+        if ($pid != 0) {
+            //取得id
+            $pidData = DB::table('types')
+                ->where('id', $pid)
+                ->first();
+
+            if (is_null($pidData)) {
+                return redirect('/admin/types/list');
+            }
+        }
+
+        $filters['pid'] = $pid;
 
         if ($name != '') {
             $filters['name'] = $name;
@@ -29,6 +43,8 @@ class TypesController extends Controller
             ->toArray();
 
         return view('admin/types/list', [
+            'pid' => $pid,
+            'pidData' => $pidData,
             'datas' => $datas,
             'name' => $name,
             'page' => $page,
@@ -41,34 +57,74 @@ class TypesController extends Controller
         
         $isEdit = false;
         $id = Request::input('id', '');
+        $pid = Request::input('pid', 0);
+        $pidData = [];
         $name = '';
+        $content = '';
         $imgUrl = '';
 
         if ($routeName == 'typesEdit') {
             $isEdit = true;
         }
 
+        if ($pid != 0) {
+            //取得id
+            $pidData = DB::table('types')
+                ->where('id', $pid)
+                ->first();
+
+            if (is_null($pidData)) {
+                return redirect('/admin/types/list');
+            }
+        }
+
         if ($id != '') {
-            $types = DB::table('types')
+            $editData = DB::table('types')
                 ->where('id', $id)
                 ->get()
                 ->first();
             
-            if (is_null($types)) {
+            if (is_null($editData)) {
                 return redirect('/admin/types/list');
             }
-
-            $name = $types->name;
+            
+            $name = $editData->name;
+            $content = $editData->content;
         }
 
         return view('admin/types/edit', [
+            'pid' => $pid,
+            'pidData' => $pidData,
             'isEdit' => $isEdit,
             'name' => $name,
+            'content' => $content,
             'id' => $id,
             'word' => $isEdit ? '編輯' : '新增'
         ]);
     }
 
+    public function doDisabled()
+    {
+        $id = Request::input('id', '');
+        $status = Request::input('status', 0);
+
+        if ($id == '') {
+            return response()->json([
+                'status' => 'error',
+                'msg' => '此帳號無法刪除或id為空'
+            ]);
+        }
+
+        DB::table('types')
+            ->where('id', $id)
+            ->update([
+                'status' => $status
+            ]);
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
     public function doEdit()
     {
         $postData = Request::input();
@@ -78,6 +134,7 @@ class TypesController extends Controller
         $name = $postData['name'] ?? '';
         $imgUrl = $postData['img_url'] ?? '';
         $content = $postData['content'] ?? '';
+        $pid = $postData['pid'] ?? 0;
 
         if ($id == '') {
             //create
@@ -105,6 +162,7 @@ class TypesController extends Controller
                 'name' => $name,
                 'img_url' => $imgUrl,
                 'content' => $content,
+                'pid' => $pid,
                 'created_at' => $date,
                 'updated_at' => $date
             ]);
@@ -125,6 +183,7 @@ class TypesController extends Controller
                 'name' => $name,
                 'img_url' => $imgUrl,
                 'content' => $content,
+                'pid' => $pid,
                 'updated_at' => $date
             ];
 
