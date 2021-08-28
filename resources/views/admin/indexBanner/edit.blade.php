@@ -7,18 +7,14 @@
   <div class="row">
     <div class="col-12 d-flex no-block align-items-center">
       <h4 class="page-title">
-        <a href="/admin/types/list?pid={{ $pid }}"><strong class="text-danger">{{ !empty($pidData) ? $pidData->name : '' }}</strong></a>
-        產品分類{{ $word }}
+        首頁輪播圖{{ $word }}
       </h4>
       <div class="ml-auto text-right">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">首頁</a></li>
-            <li class="breadcrumb-item"><a href="/admin/types/list">產品分類列表</a></li>
-            @if(!empty($pidData))
-            <li class="breadcrumb-item"><a href="/admin/types/list?pid={{ $pid }}">{{ $pidData->name }}</a></li>
-            @endif
-            <li class="breadcrumb-item active" aria-current="page">產品分類{{ $word }}</li>
+            <li class="breadcrumb-item"><a href="/admin/index/banner/list">首頁輪播圖列表</a></li>
+            <li class="breadcrumb-item active" aria-current="page">首頁輪播圖{{ $word }}</li>
           </ol>
         </nav>
       </div>
@@ -32,14 +28,13 @@
         <div class="card">
           <div class="card-body">
             <div class="form-group row">
-              <label class="col-md-1 m-t-15">名稱<span class="text-danger">*</span></label>
+              <label class="col-md-1 m-t-15">標題<span class="text-danger">*</span></label>
               <div class="col-sm-12 col-md-10 col-lg-4">
-                <input type="text" name="name" class="form-control" value="{{ $name }}">
+                <input type="text" name="title" class="form-control" value="{{ $title }}" placeholder="請輸入標題">
               </div>
             </div>
-            @if($pid == 0)
             <div class="form-group row">
-              <label class="col-md-1 m-t-15">首頁形象圖<span class="text-danger">*</span></label>
+              <label class="col-md-1 m-t-15">輪播圖片<span class="text-danger">*</span></label>
               <div class="col-sm-12 col-md-10 col-lg-6">
                 <div class="input-group">
                   <span class="input-group-btn">
@@ -56,13 +51,16 @@
                 </div>
               </div>
             </div>
-            @endif
             <div class="form-group row">
-              <label class="col-md-1 m-t-15">說明</label>
-              <div class="col-sm-12 col-md-10">
-              <textarea id="content" name="content" class="editor" class="form-control" style="height: 300px">
-                {{ $content }}
-              </textarea>
+              <label class="col-md-1 m-t-15">跳轉連結<span class="text-danger">*</span></label>
+              <div class="col-sm-12 col-md-10 col-lg-4">
+                <input type="text" name="href" class="form-control" value="{{ $href }}" placeholder="請輸入跳轉連結">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-1 m-t-15">排序</label>
+              <div class="col-sm-12 col-md-10 col-lg-4">
+                <input type="number" name="sort" class="form-control" value="{{ $sort }}" placeholder="請輸入排序(序號越大越前面)">
               </div>
             </div>
           </div>
@@ -72,7 +70,6 @@
             </div>
           </div>
           <input type="hidden" name="id" value="{{ $id }}">
-          <input type="hidden" name="pid" value="{{ $pid }}">
         </div>
       </form>
     </div>
@@ -83,21 +80,17 @@
   $(function() {
     $('#save').click(function(e) {
       e.preventDefault();
-      const content = CKEDITOR.instances.content.getData()
-      const data = {
-        name: $('input[name=name]').val(),
-        img_url: $('input[name=img_url]').val(),
-        pid: $('input[name=pid]').val(),
-        id: $('input[name=id]').val(),
-        content: content,
-      }
-
       $.ajax({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/admin/types/doEdit',
-        data: data,
+        url: '/admin/index/banner/doEdit',
+        data: {
+          title: $('input[name=title]').val(),
+          img_url: $('input[name=img_url]').val(),
+          href: $('input[name=href]').val(),
+          sort: $('input[name=sort]').val(),
+        },
         type: 'POST',
         success: function(res) {
           if (res.status == 'success') {

@@ -6,6 +6,32 @@ use Request, DB;
 
 class TypesController extends Controller
 {
+    public function listData()
+    {
+        $mainTypes = DB::table('types')
+            ->where('pid', 0)
+            ->get([
+                'id',
+                'pid',
+                'name'
+            ])
+            ->toArray();
+
+        $otherTypes = DB::table('types')
+            ->where('pid', '!=', 0)
+            ->get([
+                'id',
+                'pid',
+                'name'
+            ])
+            ->toArray();
+
+        return [
+            'mainTypes' => $mainTypes,
+            'otherTypes' => $otherTypes
+        ];
+    }
+
     public function list()
     {
         $name = Request::input('name', '');
@@ -90,6 +116,7 @@ class TypesController extends Controller
             
             $name = $editData->name;
             $content = $editData->content;
+            $imgUrl = $editData->img_url;
         }
 
         return view('admin/types/edit', [
@@ -98,6 +125,7 @@ class TypesController extends Controller
             'isEdit' => $isEdit,
             'name' => $name,
             'content' => $content,
+            'imgUrl' => $imgUrl,
             'id' => $id,
             'word' => $isEdit ? '編輯' : '新增'
         ]);
@@ -129,12 +157,21 @@ class TypesController extends Controller
     {
         $postData = Request::input();
         $date = date('Y-m-d H:i:s');
-
         $id = $postData['id'] ?? '';
         $name = $postData['name'] ?? '';
         $imgUrl = $postData['img_url'] ?? '';
         $content = $postData['content'] ?? '';
         $pid = $postData['pid'] ?? 0;
+        $level = 1;
+
+        if ($pid == 0) {
+            if ($imgUrl == '') {
+                return response()->json([
+                    'status' => 'error',
+                    'msg' => '首頁形象圖尚未設定'
+                ]);
+            }
+        }
 
         if ($id == '') {
             //create
@@ -158,10 +195,15 @@ class TypesController extends Controller
                 ]);
             }
 
+            if ($pid != 0) {
+                $level = 2;
+            }
+
             DB::table('types')->insert([
                 'name' => $name,
                 'img_url' => $imgUrl,
                 'content' => $content,
+                'level' => $level,
                 'pid' => $pid,
                 'created_at' => $date,
                 'updated_at' => $date
@@ -183,7 +225,6 @@ class TypesController extends Controller
                 'name' => $name,
                 'img_url' => $imgUrl,
                 'content' => $content,
-                'pid' => $pid,
                 'updated_at' => $date
             ];
 

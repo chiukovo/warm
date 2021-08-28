@@ -41,10 +41,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('user/doEdit', 'App\Http\Controllers\AdminController@adminUserDoEdit');
     Route::delete('user/delete', 'App\Http\Controllers\AdminController@adminUserDoDelete');
 
+    Route::get('index/banner/list', 'App\Http\Controllers\IndexBannerController@list');
+    Route::get('index/banner/edit', 'App\Http\Controllers\IndexBannerController@edit')->name('indexBannerEdit');
+    Route::get('index/banner/create', 'App\Http\Controllers\IndexBannerController@edit')->name('indexBannerCreate');
+    Route::post('index/banner/doEdit', 'App\Http\Controllers\IndexBannerController@doEdit');
+    Route::delete('index/banner/delete', 'App\Http\Controllers\IndexBannerController@doDelete');
+
     Route::get('types/list', 'App\Http\Controllers\TypesController@list');
+    Route::get('types/list/data', 'App\Http\Controllers\TypesController@listData');
     Route::get('types/edit', 'App\Http\Controllers\TypesController@edit')->name('typesEdit');
     Route::get('types/create', 'App\Http\Controllers\TypesController@edit')->name('typesCreate');
     Route::post('types/doEdit', 'App\Http\Controllers\TypesController@doEdit');
     Route::put('types/disabled', 'App\Http\Controllers\TypesController@doDisabled');
+
+    
+    Route::get('products/list', 'App\Http\Controllers\ProductsController@list');
+    Route::get('products/edit', 'App\Http\Controllers\ProductsController@edit')->name('productsEdit');
+    Route::get('products/create', 'App\Http\Controllers\ProductsController@edit')->name('productsCreate');
+    Route::post('products/doEdit', 'App\Http\Controllers\ProductsController@doEdit');
+    Route::put('products/disabled', 'App\Http\Controllers\ProductsController@doDisabled');
 });
 

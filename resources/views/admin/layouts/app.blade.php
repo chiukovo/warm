@@ -35,13 +35,18 @@
   <script>
     $(function() {
       const editor = document.querySelector('.editor')
+      const editor2 = document.querySelector('.editor2')
+
+      var options = {
+        filebrowserImageBrowseUrl: '/admin/filemanager',
+      }
 
       if (editor != null) {
-        var options = {
-          filebrowserImageBrowseUrl: '/admin/filemanager',
-        }
-
         CKEDITOR.replace(editor, options);
+      }
+
+      if (editor2 != null) {
+        CKEDITOR.replace(editor2, options);
       }
     });
   </script>
