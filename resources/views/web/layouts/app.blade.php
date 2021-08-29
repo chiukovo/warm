@@ -18,7 +18,7 @@
       <div class="nav">
         <div class="nav__top container">
           <div class="nav__left">
-            <a href="index.html" class="nav__logo"><img src="/assets/web/image/logo.png" alt="互暖網"></a>
+            <a href="/" class="nav__logo"><img src="/assets/web/image/logo.png" alt="互暖網"></a>
             <ul class="nav__infor">
               <li><i class="fas fa-headset"></i>0926-828-957</li>
               <li><i class="far fa-clock"></i>營業時間 10:00-22:00</li>
