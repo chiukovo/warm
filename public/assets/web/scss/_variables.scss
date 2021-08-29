@@ -5,7 +5,9 @@
   --white: #FFF;
   --black: #000;
   --orange: #DF5237;
-  --red: #A50000;
+  --red: #d43434;
+  --green: #15a725;
+  --blue: #3353d5;
 
   --hue-color: 190;
 
@@ -13,6 +15,7 @@
   --blue-hue-color: 202;
   --gray-blue: hsl(var(--blue-hue-color), 31%, 54%);
   --gray-blue-light: hsl(var(--blue-hue-color), 30%, 92%);
+  --gray-blue-dark: hsl(var(--blue-hue-color), 30%, 40%);
 
   // #7bbb5d
   --green-hue-color: 101;

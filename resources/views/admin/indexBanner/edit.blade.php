@@ -86,6 +86,7 @@
         },
         url: '/admin/index/banner/doEdit',
         data: {
+          id: $('input[name=id]').val(),
           title: $('input[name=title]').val(),
           img_url: $('input[name=img_url]').val(),
           href: $('input[name=href]').val(),

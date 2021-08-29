@@ -14,13 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //web
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'App\Http\Controllers\WebController@index');
 
 
 //admin
-
 Route::get('admin/login', 'App\Http\Controllers\AdminController@login')->name('adminLogin');
 Route::post('admin/login', 'App\Http\Controllers\AdminController@doLogin');
 
