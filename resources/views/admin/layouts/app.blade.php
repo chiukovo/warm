@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
-  <title>{{ env('APP_NAME') }}</title>
+  <title>{{ env('APP_NAME') }}管理者後台</title>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/assets/fonts/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/extra-libs/multicheck/multicheck.css">
