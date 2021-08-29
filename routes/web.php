@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //web
-Route::get('/', 'App\Http\Controllers\WebController@index');
+Route::get('/', 'App\Http\Controllers\WebController@index')->name('webIndex');
+Route::get('/about/{name}', 'App\Http\Controllers\WebController@about')->name('webAbout');
+Route::get('/product/{name}', 'App\Http\Controllers\WebController@product')->name('webProduct');
+Route::get('/apply/{name}/{product}', 'App\Http\Controllers\WebController@apply')->name('webApply');
 
 
 //admin
@@ -43,6 +46,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('index/banner/create', 'App\Http\Controllers\IndexBannerController@edit')->name('indexBannerCreate');
     Route::post('index/banner/doEdit', 'App\Http\Controllers\IndexBannerController@doEdit');
     Route::delete('index/banner/delete', 'App\Http\Controllers\IndexBannerController@doDelete');
+
+    Route::get('about/list', 'App\Http\Controllers\AboutListController@list');
+    Route::get('about/edit', 'App\Http\Controllers\AboutListController@edit')->name('aboutListEdit');
+    Route::get('about/create', 'App\Http\Controllers\AboutListController@edit')->name('aboutListCreate');
+    Route::post('about/doEdit', 'App\Http\Controllers\AboutListController@doEdit');
+    Route::delete('about/delete', 'App\Http\Controllers\AboutListController@doDelete');
 
     Route::get('types/list', 'App\Http\Controllers\TypesController@list');
     Route::get('types/list/data', 'App\Http\Controllers\TypesController@listData');

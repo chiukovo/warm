@@ -33,7 +33,9 @@
   <section class="{{ getIndexProClass($key) }}">
     <div class="container">
       <div class="banner">
+      <a href="/product/{{ $header->name }}">
         <img src="{{ $header->img_url }}">
+      </a>
       </div>
       @if(!empty($header->products))
       <div class="pro">
@@ -44,7 +46,7 @@
               <div class="swiper-slide">
                 <div class="pro__item">
                   <div class="pro__img">
-                    <img src="{{ $product->img_url }}">
+                    <a href="/product/{{ $header->name }}"><img src="{{ $product->img_url }}"></a>
                   </div>
                   <div class="pro__info">
                     <ul class="tag__list">

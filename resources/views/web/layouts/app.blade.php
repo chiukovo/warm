@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="/assets/web/css/style.css">
 </head>
 <body>
+  @php
+    $productData = getHeaderData();
+  @endphp
   <div id="app">
     <header class="header">
       <div class="nav">
@@ -37,15 +40,17 @@
           :class="navMenu ? 'show' : ''"
           >
           <div class="nav__inner container">
+            @if(showNavMenu())
             <div class="nav__title">快速導覽</div>
+            @endif
             <ul class="nav__list">
-              @foreach(getHeaderData()['headers'] as $header)
+              @foreach($productData['headers'] as $header)
               <li class="nav__item has-submenu">
-                <a href="proList.html" class="nav__link">{{ $header->name }}</a>
+                <a href="/product/{{ $header->name }}" class="nav__link">{{ $header->name }}</a>
                 <ul class="nav__submenu">
                   @foreach($header->subMenu as $data)
                   <li class="nav__subitem">
-                    <a href="#" class="nav__link">{{ $data->name }}</a>
+                    <a href="/product/{{ $header->name }}#{{ $data->name }}" class="nav__link">{{ $data->name }}</a>
                   </li>
                   @endforeach
                 </ul>
@@ -54,12 +59,11 @@
               <li class="nav__item has-submenu">
                 <a href="#" class="nav__link">關於我們</a>
                 <ul class="nav__submenu">
+                  @foreach(getAboutList() as $list)
                   <li class="nav__subitem">
-                    <a href="#" class="nav__link">介紹互暖網</a>
+                    <a href="/about/{{ $list->name }}" class="nav__link">{{ $list->name }}</a>
                   </li>
-                  <li class="nav__subitem">
-                    <a href="#" class="nav__link">介紹免卡/無卡分期</a>
-                  </li>
+                  @endforeach
                 </ul>
               </li>
             </ul>
@@ -78,43 +82,19 @@
           </ul>
         </div>
         <div class="footer__group">
+          @foreach($productData['headers'] as $header)
           <ul class="footer__list">
-            <li class="title"><a href="#" class="footer__link footer__link-title">蘋果館</a></li>
-            <li><a href="#" class="footer__link">iPhone 12無卡分期</a></li>
-            <li><a href="#" class="footer__link">Apple全系列分期價格表</a></li>
-            <li>
-              <a href="#" class="footer__link">iPhone 介紹</a>
-              <a href="#" class="footer__link">iPad 介紹</a>
-            </li>
-            <li><a href="#" class="footer__link">AppleWatch 介紹</a></li>
-            <li><a href="#" class="footer__link">MacBook 介紹</a></li>
-            <li><a href="#" class="footer__link">Mac桌機 介紹</a></li>
-            <li><a href="#" class="footer__link">Apple 週邊配件</a></li>
+            <li class="title"><a href="/product/{{ $header->name }}" class="footer__link footer__link-title">{{ $header->name }}</a></li>
+            @foreach($header->subMenu as $data)
+            <li><a href="/product/{{ $header->name }}#{{ $data->name }}" class="footer__link">{{ $data->name }}</a></li>
+            @endforeach
           </ul>
-          <ul class="footer__list">
-            <li class="title"><a href="#" class="footer__link footer__link-title">手機館</a></li>
-            <li class="title"><a href="#" class="footer__link footer__link-title">相機館</a></li>
-            <li class="title"><a href="#" class="footer__link footer__link-title">自組電腦</a></li>
-            <li class="title"><a href="#" class="footer__link footer__link-title">精品館</a></li>
-            <li class="title"><a href="#" class="footer__link footer__link-title">電玩館</a></li>
-            <li><a href="#" class="footer__link">電玩專區</a></li>
-            <li><a href="#" class="footer__link">點數卡分期</a></li>
-          </ul>
-          <ul class="footer__list">
-            <li class="title"><a href="#" class="footer__link footer__link-title">家電館</a></li>
-            <li><a href="#" class="footer__link">家電分期</a></li>
-            <li><a href="#" class="footer__link">電視專區</a></li>
-            <li><a href="#" class="footer__link">冷氣專區</a></li>
-            <li><a href="#" class="footer__link">洗衣機專區</a></li>
-            <li><a href="#" class="footer__link">冰箱專區</a></li>
-          </ul>
+          @endforeach
           <ul class="footer__list">
             <li class="title"><a href="#" class="footer__link footer__link-title">關於我們</a></li>
-            <li><a href="#" class="footer__link">介紹互暖網</a></li>
-            <li><a href="#" class="footer__link">介紹免卡/無卡分期</a></li>
-            <li class="title"><a href="#" class="footer__link footer__link-title">開箱趣</a></li>
-            <li><a href="#" class="footer__link">互暖網開箱趣</a></li>
-            <li class="title"><a href="#" class="footer__link footer__link-title">線上申請</a></li>
+            @foreach(getAboutList() as $list)
+            <li><a href="/about/{{ $list->name }}" class="footer__link">{{ $list->name }}</a></li>
+            @endforeach
           </ul>
         </div>
       </div>

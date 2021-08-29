@@ -220,12 +220,12 @@ class ProductsController extends Controller
 
         if ($secTypes == '') {
             //檢查是否真的沒下層
-            $secTypes = DB::table('types')
+            $secTypesData = DB::table('types')
                 ->where('pid', $mainTypes)
                 ->get()
                 ->first();
             
-            if (!is_null($secTypes)) {
+            if (!is_null($secTypesData)) {
                 return response()->json([
                     'status' => 'error',
                     'msg' => '第二層欄位尚未填寫'

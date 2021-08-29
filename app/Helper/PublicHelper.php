@@ -81,6 +81,34 @@ if (!function_exists('getIndexProClass')) {
     }
 }
 
+if (!function_exists('showNavMenu')) {
+    function showNavMenu()
+    {
+        $routeName = Request::route()->getName();
+
+        if (
+            $routeName == 'webIndex' ||
+            $routeName == 'webProduct'
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists('getAboutList')) {
+    function getAboutList()
+    {
+        $aboutList = DB::table('about_list')
+            ->orderBy('sort', 'desc')
+            ->get()
+            ->toArray();
+
+        return $aboutList;
+    }
+}
+
 if (!function_exists('getHeaderData')) {
 
     function getHeaderData()
@@ -131,14 +159,12 @@ if (!function_exists('getHeaderData')) {
                         $type->products[] = $product;
                     }
                 }
-                
+                            
                 $headers[] = $type;
-
             } else {
                 $nav[$type->pid][] = $type;
             }
         }
-
         return [
             'headers' => $headers,
             'nav' => $nav,

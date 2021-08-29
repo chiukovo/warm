@@ -9,6 +9,9 @@
                     <a href="/admin/index/banner/list" class="sidebar-link waves-dark"><i class="mdi mdi-file-image"></i><span class="hide-menu">首頁輪播圖</span></a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="/admin/about/list" class="sidebar-link waves-dark"><i class="mdi mdi-file-image"></i><span class="hide-menu">關於我們</span></a>
+                </li>
+                <li class="sidebar-item">
                     <a href="/admin/types/list" class="sidebar-link waves-dark"><i class="mdi mdi-file-image"></i><span class="hide-menu">產品分類</span></a>
                 </li>
                 <li class="sidebar-item">
