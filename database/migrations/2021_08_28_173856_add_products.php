@@ -20,8 +20,8 @@ class AddProducts extends Migration
             $table->integer('month_money');
             $table->integer('status')->default(1);
             $table->text('img_url');
-            $table->json('types_ids');
-            $table->json('staging');
+            $table->text('types_ids');
+            $table->text('staging');
             $table->text('tags');
             $table->text('content_detail');
             $table->text('content');
