@@ -112,6 +112,9 @@
       }
     })
     new Swiper(".banner-swiper", {
+      autoplay: {
+        delay: 5000,
+      },
       pagination: {
         el: ".swiper-pagination",
         clickable: true,

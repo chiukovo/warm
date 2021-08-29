@@ -121,6 +121,7 @@
       }
       .top {
         display: table;
+        table-layout: fixed;
         border-collapse: collapse;
         width: 100%;
         .title, .info {
@@ -133,11 +134,16 @@
             padding-bottom: 1rem;
           }
         }
+        .info {
+          table-layout: fixed;
+        }
         .block {
           display: table-cell;
+          vertical-align: middle;
           text-align: center;
           padding: 1rem .5rem 0;
           img {
+            width: 100%;
             max-width: 80px;
           }
         }
@@ -290,6 +296,11 @@
   .pro {
     .aside {
       display: block;
+    }
+  }
+  .pro-wrap .pro-group .pro-group__list .top .block {
+    &:nth-child(2) {
+      width: 200px;
     }
   }
 }

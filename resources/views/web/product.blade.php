@@ -32,7 +32,6 @@
               <div class="pro-group__header">
                 <div  id="{{ $list['name'] }}" class="pro-group__title">{{ $list['name'] }}</div>
                 <div class="pro-group__card">
-                  <a href="#" style="background-color: #d43434;">產品詳細規格介紹</a>
                   <a href="#" style="background-color: #15a725;">方式一：線上客服協助申請</a>
                   <a href="#" style="background-color: #3353D5;">方式二：24小時線上申請</a>
                 </div>

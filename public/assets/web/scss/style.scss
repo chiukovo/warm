@@ -233,6 +233,7 @@ hr {
     border-top: 0;
     border-radius: 0 0 8px 8px;
     .pro__list {
+      overflow: hidden;
       position: relative;
       padding: .5rem 0;
     }
@@ -284,6 +285,10 @@ hr {
       }
     }
   }
+}
+.swiper-wrapper {
+  overflow: hidden;
+  transform: translate3d(0px,0,0) !important;
 }
 .swiper-container {
   width: 90%;
