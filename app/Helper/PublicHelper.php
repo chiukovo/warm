@@ -109,6 +109,17 @@ if (!function_exists('getAboutList')) {
     }
 }
 
+if (!function_exists('getSetting')) {
+    function getSetting()
+    {
+        $setting = DB::table('system_setting')
+            ->first();
+
+        return $setting;
+    }
+}
+
+
 if (!function_exists('getHeaderData')) {
 
     function getHeaderData()

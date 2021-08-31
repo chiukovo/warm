@@ -60,11 +60,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('types/doEdit', 'App\Http\Controllers\TypesController@doEdit');
     Route::put('types/disabled', 'App\Http\Controllers\TypesController@doDisabled');
 
-    
     Route::get('products/list', 'App\Http\Controllers\ProductsController@list');
     Route::get('products/edit', 'App\Http\Controllers\ProductsController@edit')->name('productsEdit');
     Route::get('products/create', 'App\Http\Controllers\ProductsController@edit')->name('productsCreate');
     Route::post('products/doEdit', 'App\Http\Controllers\ProductsController@doEdit');
     Route::put('products/disabled', 'App\Http\Controllers\ProductsController@doDisabled');
+
+    Route::get('system/setting', 'App\Http\Controllers\SystemController@index');
+    Route::post('system/setting', 'App\Http\Controllers\SystemController@doEdit');
 });
 

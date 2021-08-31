@@ -12,6 +12,7 @@
 <body>
   @php
     $productData = getHeaderData();
+    $setting = getSetting();
   @endphp
   <div id="app">
     <header class="header">
@@ -20,15 +21,15 @@
           <div class="nav__left">
             <a href="/" class="nav__logo"><img src="/assets/web/image/logo.png" alt="互暖網"></a>
             <ul class="nav__infor">
-              <li><i class="fas fa-headset"></i>0926-828-957</li>
-              <li><i class="far fa-clock"></i>營業時間 10:00-22:00</li>
+              <li><i class="fas fa-headset"></i>{{ $setting->phone }}</li>
+              <li><i class="far fa-clock"></i>營業時間 {{ $setting->business_hours }}</li>
             </ul>
           </div>
           <div class="nav__right">
             <ul class="nav__contact">
-              <li><a href="#"><img src="/assets/web/image/conatct_line.jpg"></a></li>
-              <li><a href="#"><img src="/assets/web/image/conatct_fb.jpg"></a></li>
-              <li><a href="#"><img src="/assets/web/image/conatct_ig.jpg"></a></li>
+              <li><a href="{{ $setting->line_link }}"><img src="/assets/web/image/conatct_line.jpg"></a></li>
+              <li><a href="{{ $setting->fb_link }}"><img src="/assets/web/image/conatct_fb.jpg"></a></li>
+              <li><a href="{{ $setting->ig_link }}"><img src="/assets/web/image/conatct_ig.jpg"></a></li>
             </ul>
             <div class="nav__toggle"
               :class="navMenu ? 'show' : ''"
@@ -77,8 +78,8 @@
         <div class="footer__info">
           <a href="#" class="nav__logo"><img src="/assets/web/image/logo.png" alt="互暖網"></a>
           <ul class="nav__infor">
-            <li><i class="fas fa-headset"></i>0926-828-957</li>
-            <li><i class="far fa-clock"></i>營業時間 10:00-22:00</li>
+            <li><i class="fas fa-headset"></i>{{ $setting->phone }}</li>
+            <li><i class="far fa-clock"></i>營業時間 {{ $setting->business_hours }}</li>
           </ul>
         </div>
         <div class="footer__group">

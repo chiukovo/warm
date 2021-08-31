@@ -20,6 +20,9 @@
                 <li class="sidebar-item">
                     <a href="/admin/filemanager-page" class="sidebar-link waves-dark"><i class="mdi mdi-file-image"></i><span class="hide-menu">圖片管理</span></a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="/admin/system/setting" class="sidebar-link waves-dark"><i class="mdi mdi-settings"></i><span class="hide-menu">系統設置</span></a>
+                </li>
             </ul>
         </nav>
     </div>
