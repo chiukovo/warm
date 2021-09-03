@@ -27,9 +27,9 @@
           </div>
           <div class="nav__right">
             <ul class="nav__contact">
-              <li><a href="{{ $setting->line_link }}"><img src="/assets/web/image/conatct_line.jpg"></a></li>
-              <li><a href="{{ $setting->fb_link }}"><img src="/assets/web/image/conatct_fb.jpg"></a></li>
-              <li><a href="{{ $setting->ig_link }}"><img src="/assets/web/image/conatct_ig.jpg"></a></li>
+              <li><a href="{{ $setting->line_link }}"><img src="/assets/web/image/conatct_line.png"></a></li>
+              <li><a href="{{ $setting->fb_link }}"><img src="/assets/web/image/conatct_fb.png"></a></li>
+              <li><a href="{{ $setting->ig_link }}"><img src="/assets/web/image/conatct_ig.png"></a></li>
             </ul>
             <div class="nav__toggle"
               :class="navMenu ? 'show' : ''"
