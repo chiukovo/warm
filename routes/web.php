@@ -18,6 +18,7 @@ Route::get('/', 'App\Http\Controllers\WebController@index')->name('webIndex');
 Route::get('/about/{name}', 'App\Http\Controllers\WebController@about')->name('webAbout');
 Route::get('/product/{name}', 'App\Http\Controllers\WebController@product')->name('webProduct');
 Route::get('/apply/{name}/{product}', 'App\Http\Controllers\WebController@apply')->name('webApply');
+Route::post('/apply/create', 'App\Http\Controllers\WebController@createApply');
 
 
 //admin
@@ -65,6 +66,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('products/create', 'App\Http\Controllers\ProductsController@edit')->name('productsCreate');
     Route::post('products/doEdit', 'App\Http\Controllers\ProductsController@doEdit');
     Route::put('products/disabled', 'App\Http\Controllers\ProductsController@doDisabled');
+
+    Route::get('apply/list', 'App\Http\Controllers\ApplyController@list');
 
     Route::get('system/setting', 'App\Http\Controllers\SystemController@index');
     Route::post('system/setting', 'App\Http\Controllers\SystemController@doEdit');

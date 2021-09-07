@@ -18,6 +18,9 @@
                     <a href="/admin/products/list" class="sidebar-link waves-dark"><i class="mdi mdi-codepen"></i><span class="hide-menu">產品列表</span></a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="/admin/apply/list" class="sidebar-link waves-dark"><i class="mdi mdi-codepen"></i><span class="hide-menu">申請列表</span></a>
+                </li>
+                <li class="sidebar-item">
                     <a href="/admin/filemanager-page" class="sidebar-link waves-dark"><i class="mdi mdi-file-image"></i><span class="hide-menu">圖片管理</span></a>
                 </li>
                 <li class="sidebar-item">
