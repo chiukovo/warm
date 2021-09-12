@@ -17,11 +17,15 @@ class AddApply extends Migration
             $table->id();
             $table->integer('types_id')->default(0);
             $table->integer('products_id')->default(0);
-            $table->string('periods');
+            $table->integer('status')->default(0);
             $table->string('name');
-            $table->string('phone');
-            $table->string('profession');
+            $table->string('id_number');
             $table->string('age');
+            $table->text('res_address');
+            $table->text('current_address');
+            $table->string('phone');
+            $table->string('identity');
+            $table->string('line_id');
             $table->string('ip');
             $table->timestamps();
         });

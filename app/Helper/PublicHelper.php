@@ -97,6 +97,16 @@ if (!function_exists('showNavMenu')) {
     }
 }
 
+if (!function_exists('getApplyStatus0')) {
+    function getApplyStatus0()
+    {
+        return DB::table('apply')
+            ->where('status', 0)
+            ->get(['id'])
+            ->count();
+    }
+}
+
 if (!function_exists('getAboutList')) {
     function getAboutList()
     {

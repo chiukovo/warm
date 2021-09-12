@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 //web
 Route::get('/', 'App\Http\Controllers\WebController@index')->name('webIndex');
+Route::get('/refreshCaptcha', 'App\Http\Controllers\WebController@refreshCaptcha');
 Route::get('/about/{name}', 'App\Http\Controllers\WebController@about')->name('webAbout');
 Route::get('/product/{name}', 'App\Http\Controllers\WebController@product')->name('webProduct');
+Route::get('/product/{name}/detail/{id}', 'App\Http\Controllers\WebController@productDetail')->name('webProductDetail');
 Route::get('/apply/{name}/{product}', 'App\Http\Controllers\WebController@apply')->name('webApply');
 Route::post('/apply/create', 'App\Http\Controllers\WebController@createApply');
 
@@ -68,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::put('products/disabled', 'App\Http\Controllers\ProductsController@doDisabled');
 
     Route::get('apply/list', 'App\Http\Controllers\ApplyController@list');
+    Route::put('apply/changeStatus', 'App\Http\Controllers\ApplyController@changeStatus');
 
     Route::get('system/setting', 'App\Http\Controllers\SystemController@index');
     Route::post('system/setting', 'App\Http\Controllers\SystemController@doEdit');

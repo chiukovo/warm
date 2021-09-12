@@ -3,6 +3,7 @@
 @section('content')
 @php
   $productData = getHeaderData();
+  $setting = getSetting();
 @endphp
 <main class="main">
   <section class="pro">
@@ -48,10 +49,18 @@
                       <div class="title">
                         <div class="block">圖片</div>
                         <div class="block">名稱</div>
-                        <div class="block">6期</div>
-                        <div class="block">12期</div>
-                        <div class="block">24期</div>
-                        <div class="block">30期</div>
+                        <div class="block">
+                        @if($setting->show_staging) 6期 @endif
+                        </div>
+                        <div class="block">
+                        @if($setting->show_staging) 12期 @endif
+                        </div>
+                        <div class="block">
+                        @if($setting->show_staging) 24期 @endif
+                        </div>
+                        <div class="block">
+                        @if($setting->show_staging) 30期 @endif
+                        </div>
                       </div>
                       @endif
                       <div class="info">
@@ -59,20 +68,22 @@
                         <img src="{{ $detail->img_url }}">
                         </div>
                         <div class="block">
-                        {{ $detail->name }}
+                        <a href="/product/aaa/detail/{{ $detail->id }}">{{ $detail->name }}</a>
+                        </div>
+                        @if($setting->show_staging)
+                        <div class="block">
+                          <span class="text-red">{{ $staging->staging_6 == '' ? '-' : '$' . $staging->staging_6 }}</span>
                         </div>
                         <div class="block">
-                          <span class="text-red">{{ $staging->staging_6 == '' ? 'X' : '$' . $staging->staging_6 }}</span>
+                          <span class="text-red">{{ $staging->staging_12 == '' ? '-' : '$' . $staging->staging_12 }}</span>
                         </div>
                         <div class="block">
-                          <span class="text-red">{{ $staging->staging_12 == '' ? 'X' : '$' . $staging->staging_12 }}</span>
+                          <span class="text-red">{{ $staging->staging_24 == '' ? '-' : '$' . $staging->staging_24 }}</span>
                         </div>
                         <div class="block">
-                          <span class="text-red">{{ $staging->staging_24 == '' ? 'X' : '$' . $staging->staging_24 }}</span>
+                          <span class="text-red">{{ $staging->staging_30 == '' ? '-' : '$' . $staging->staging_30 }}</span>
                         </div>
-                        <div class="block">
-                          <span class="text-red">{{ $staging->staging_30 == '' ? 'X' : '$' . $staging->staging_30 }}</span>
-                        </div>
+                        @endif
                       </div>
                     </div>
                     <div class="bottom">

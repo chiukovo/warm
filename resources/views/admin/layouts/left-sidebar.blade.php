@@ -18,7 +18,9 @@
                     <a href="/admin/products/list" class="sidebar-link waves-dark"><i class="mdi mdi-codepen"></i><span class="hide-menu">產品列表</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="/admin/apply/list" class="sidebar-link waves-dark"><i class="mdi mdi-codepen"></i><span class="hide-menu">申請列表</span></a>
+                    <a href="/admin/apply/list" class="sidebar-link waves-dark"><i class="mdi mdi-codepen"></i><span class="hide-menu">申請列表</span>
+                    <span class="numberCircle"><span>{{ getApplyStatus0() }}</span></span>
+                </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="/admin/filemanager-page" class="sidebar-link waves-dark"><i class="mdi mdi-file-image"></i><span class="hide-menu">圖片管理</span></a>
@@ -30,3 +32,23 @@
         </nav>
     </div>
 </aside>
+<style>
+.numberCircle {
+  display: inline-block;
+  line-height: 0px;
+  border-radius: 50%;
+  border: 0;
+  font-size: 12px;
+  background: #e02828;
+  position: absolute;
+  right: 30px;
+}
+
+.numberCircle span {
+  display: inline-block;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+</style>

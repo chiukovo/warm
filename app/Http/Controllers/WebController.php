@@ -6,6 +6,11 @@ use Request, DB;
 
 class WebController extends Controller
 {
+    public function refreshCaptcha()
+    {
+        return captcha_src();
+    }
+
     public function index()
     {
         $banners = DB::table('index_banner')
@@ -18,8 +23,25 @@ class WebController extends Controller
         ]);
     }
 
+    public function productDetail($name, $id)
+    {
+        $product = DB::table('products')
+            ->where('status', 1)
+            ->where('id', $id)
+            ->first();
+
+        if (is_null($product)) {
+            return redirect('/');
+        }
+
+        return view('web/product_detail', [
+            'product' => $product,
+            'name' => $name,
+        ]);
+    }
+
     public function product($name)
-    {   
+    {
         $type = DB::table('types')
             ->where('status', 1)
             ->where('name', $name)
@@ -95,21 +117,36 @@ class WebController extends Controller
         $ip = Request::ip();
         $type = $postData['type'] ?? '';
         $product = $postData['product'] ?? '';
-        $periods = $postData['periods'] ?? '';
         $name = $postData['name'] ?? '';
-        $phone = $postData['phone'] ?? '';
-        $profession = $postData['profession'] ?? '';
+        $id_number = $postData['id_number'] ?? '';
         $age = $postData['age'] ?? '';
- 
+        $res_address = $postData['res_address'] ?? '';
+        $current_address = $postData['current_address'] ?? '';
+        $phone = $postData['phone'] ?? '';
+        $identity = $postData['identity'] ?? '';
+        $lineId = $postData['line_id'] ?? '';
+
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = validator()->make(request()->all(), $rules);
+
+        if ($validator->fails()) {
+            return [
+                'status' => 'error',
+                'msg' => '驗證碼錯誤',
+            ];
+        }
+
         //檢查
         if (
             $type == '' ||
             $product == '' ||
-            $periods == '' ||
             $name == '' ||
+            $id_number == '' ||
+            $age == '' ||
+            $res_address == '' ||
+            $current_address == '' ||
             $phone == '' ||
-            $profession == '' ||
-            $age == ''
+            $identity == ''
         ) {
             return [
                 'status' => 'error',
@@ -120,11 +157,13 @@ class WebController extends Controller
         if (
             strlen($type) > 100 ||
             strlen($product) > 100 ||
-            strlen($periods) > 100 ||
             strlen($name) > 100 ||
+            strlen($id_number) > 100 ||
+            strlen($age) > 100 ||
+            strlen($res_address) > 500 ||
+            strlen($current_address) > 500 ||
             strlen($phone) > 100 ||
-            strlen($profession) > 100 ||
-            strlen($age) > 100
+            strlen($identity) > 100
         ) {
             return [
                 'status' => 'error',
@@ -135,11 +174,14 @@ class WebController extends Controller
         DB::table('apply')->insert([
             'types_id' => (int)$type,
             'products_id' => (int)$product,
-            'periods' => $periods,
             'name' => $name,
-            'phone' => $phone,
-            'profession' => $profession,
+            'id_number' => $id_number,
             'age' => $age,
+            'res_address' => $res_address,
+            'current_address' => $current_address,
+            'phone' => $phone,
+            'identity' => $identity,
+            'line_id' => $lineId,
             'ip' => $ip,
             'created_at' => date('Y-m-d H:i:s'),
         ]);

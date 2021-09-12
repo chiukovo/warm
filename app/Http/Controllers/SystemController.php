@@ -29,6 +29,7 @@ class SystemController extends Controller
             'business_hours' => $postData['business_hours'] ?? '',
             'address' => $postData['address'] ?? '',
             'phone' => $postData['phone'] ?? '',
+            'show_staging' => $postData['show_staging'] ?? 0,
             'updated_at' => $date,
         ];
         

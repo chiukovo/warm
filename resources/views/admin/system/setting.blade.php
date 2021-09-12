@@ -62,6 +62,23 @@
                 <input type="text" name="phone" class="form-control" value="{{ $setting->phone }}" placeholder="請輸入電話">
               </div>
             </div>
+            <div class="form-group row">
+              <label class="col-md-1 m-t-15">開啟分期價格顯示</label>
+              <div class="col-sm-12 col-md-10 col-lg-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="show_staging" id="staging1" value="1" @if($setting->show_staging) checked @endif>
+                <label class="form-check-label" for="staging1">
+                  開啟
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="show_staging" id="staging2" value="0" @if(!$setting->show_staging) checked @endif>
+                <label class="form-check-label" for="staging2">
+                  關閉
+                </label>
+              </div>
+              </div>
+            </div>
           </div>
           <div class="border-top">
             <div class="card-body">
