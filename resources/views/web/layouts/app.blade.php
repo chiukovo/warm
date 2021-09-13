@@ -8,7 +8,7 @@
   <title>{{ env('APP_NAME') }} </title>
   <link rel="stylesheet" href="/assets/web/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-  <link rel="stylesheet" href="/assets/web/css/style.css">
+  <link rel="stylesheet" href="/assets/web/css/style.css?v=1">
 </head>
 <body>
   @php
@@ -68,7 +68,7 @@
                   @endforeach
                 </ul>
               </li>
-              <li class="nav__item has-submenu">
+              <li class="nav__item">
                 <a href="/qa" class="nav__link">QA快速初審</a>
               </li>
             </ul>
