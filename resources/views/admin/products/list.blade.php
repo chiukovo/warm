@@ -25,6 +25,15 @@
                     <form action="">
                         <div class="form form-row align-items-center m-b-10">
                             <div class="col-auto">
+                                <label class="text-xs sr-only">館別</label>
+                                <select class="form-control" name="productId">
+                                    <option value="">請選擇館別</option>
+                                    @foreach($mainTypes as $type)
+                                    <option value="{{ $type->id }}" @if($productId == $type->id) selected @endif>{{ $type->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-auto">
                                 <label class="text-xs sr-only">名稱</label>
                                 <input name="name" type="text" class="form-control" placeholder="請輸入名稱" value="{{ $name }}">
                             </div>

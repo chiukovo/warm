@@ -10,6 +10,7 @@ class ProductsController extends Controller
     {
         $name = Request::input('name', '');
         $page = Request::input('page', 1);
+        $productId = Request::input('productId', '');
         $filters = [];
 
         if ($name != '') {
@@ -21,6 +22,19 @@ class ProductsController extends Controller
         if (!empty($filters)) {
             $datas->where($filters);
         }
+        
+        if ($productId != '') {
+            $typesId = [
+                'level_1' => $productId
+            ];
+            
+            $target = json_encode($typesId);
+            $target = str_replace("{", "", $target);
+            $target = str_replace("}", "", $target);
+
+            $datas->where('types_ids', 'like', '%' . $target . '%');
+        }
+
 
         $types = DB::table('types')
             ->get([
@@ -34,6 +48,16 @@ class ProductsController extends Controller
             ->select()
             ->paginate(config('app.pageSize'))
             ->toArray();
+
+        $mainTypes = DB::table('types')
+            ->where('pid', 0)
+            ->get([
+                'id',
+                'pid',
+                'name',
+            ])
+            ->toArray();
+
 
         foreach($datas['data'] as $key => $data) {
             $typesIds = json_decode($data->types_ids);
@@ -74,6 +98,8 @@ class ProductsController extends Controller
             'datas' => $datas,
             'name' => $name,
             'page' => $page,
+            'mainTypes' => $mainTypes,
+            'productId' => $productId,
         ]);
     }
 

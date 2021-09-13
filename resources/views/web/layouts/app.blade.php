@@ -144,7 +144,7 @@
     })
 
     $('#speed_nav').click(function() {
-      $('#nav__side').toggle();
+      $('.speed__side').toggle();
     })
   </script>
 

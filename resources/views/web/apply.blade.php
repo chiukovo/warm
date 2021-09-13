@@ -46,17 +46,6 @@
               <div class="form">
                 <div class="form__title">選擇購買商品</div>
                 <div class="form__group">
-                  <span class="label">產品類型</span>
-                  <div class="input">
-                    <select name="type">
-                      <option>請選擇產品類別</option>
-                      @foreach($types as $type)
-                      <option value="{{ $type->id }}" @if($type->id == $nameId) selected @endif>{{ $type->name }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="form__group">
                   <span class="label">商品</span>
                   <div class="input">
                     <select name="product">
@@ -101,13 +90,6 @@
                     <div class="input">
                       <div class="res_address"></div>
                       <input type="text" name="res_address_dt" placeholder="">
-                    </div>
-                  </div>
-                  <div class="form__group">
-                    <span class="label">現居地址 <span class="text-red">*</span></span>
-                    <div class="input">
-                      <div class="current_address"></div>
-                      <input type="text" name="current_address_dt" placeholder="">
                     </div>
                   </div>
                 </div>
@@ -188,7 +170,6 @@ $(function() {
   $('#apply').click(function(e) {
       e.preventDefault();
 
-      const current_address_dt = $('input[name=current_address_dt]').val()
       const res_address_dt = $('input[name=res_address_dt]').val()
       const get_res_address = res_address.get()[0]
       const get_current_address = current_address.get()[0]
@@ -196,9 +177,6 @@ $(function() {
       if (
         get_res_address.county == '' ||
         get_res_address.district == '' ||
-        get_current_address.county == '' ||
-        get_current_address.district == '' ||
-        current_address_dt == '' ||
         res_address_dt == ''
       ) {
         alert('必填項目: 請填寫地址')
@@ -207,13 +185,11 @@ $(function() {
 
 
       const data = {
-        type: $('select[name=type]').val(),
         product: $('select[name=product]').val(),
         name: $('input[name=name]').val(),
         id_number: $('input[name=id_number]').val(),
         age: $('input[name=age]').val(),
         res_address: get_res_address.zipcode + get_res_address.county + get_res_address.district + res_address_dt,
-        current_address: get_current_address.zipcode + get_current_address.county + get_current_address.district + current_address_dt,
         phone: $('input[name=phone]').val(),
         identity: $('input[name=identity]').val(),
         line_id: $('input[name=line_id]').val(),

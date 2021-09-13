@@ -37,13 +37,11 @@
                             <thead>
                                 <tr>
                                     <th>序號</th>
-                                    <th>產品類型</th>
                                     <th>商品</th>
                                     <th>姓名</th>
                                     <th>身分證字號</th>
                                     <th>出生年月日</th>
                                     <th>戶籍地址</th>
-                                    <th>現居地址</th>
                                     <th>行動電話</th>
                                     <th>身分別</th>
                                     <th>申請人LINE ID</th>
@@ -57,16 +55,12 @@
                                 <tr>
                                     <td>{{ $data->id }}</td>
                                     <td>
-                                        {{ $data->types_name == null ? '無輸入' : $data->types_name }}
-                                    </td>
-                                    <td>
                                         {{ $data->products_name == null ? '無輸入' : $data->products_name }}
                                     </td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->id_number }}</td>
                                     <td>{{ $data->age }}</td>
                                     <td>{{ $data->res_address }}</td>
-                                    <td>{{ $data->current_address }}</td>
                                     <td>{{ $data->phone }}</td>
                                     <td>{{ $data->identity }}</td>
                                     <td>{{ $data->line_id }}</td>

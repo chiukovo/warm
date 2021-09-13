@@ -115,13 +115,11 @@ class WebController extends Controller
     {
         $postData = Request::input();
         $ip = Request::ip();
-        $type = $postData['type'] ?? 0;
         $product = $postData['product'] ?? 0;
         $name = $postData['name'] ?? '';
         $id_number = $postData['id_number'] ?? '';
         $age = $postData['age'] ?? '';
         $res_address = $postData['res_address'] ?? '';
-        $current_address = $postData['current_address'] ?? '';
         $phone = $postData['phone'] ?? '';
         $identity = $postData['identity'] ?? '';
         $lineId = $postData['line_id'] ?? '';
@@ -142,7 +140,6 @@ class WebController extends Controller
             $id_number == '' ||
             $age == '' ||
             $res_address == '' ||
-            $current_address == '' ||
             $phone == '' ||
             $identity == ''
         ) {
@@ -153,13 +150,11 @@ class WebController extends Controller
         }
 
         if (
-            strlen($type) > 100 ||
             strlen($product) > 100 ||
             strlen($name) > 100 ||
             strlen($id_number) > 100 ||
             strlen($age) > 100 ||
             strlen($res_address) > 500 ||
-            strlen($current_address) > 500 ||
             strlen($phone) > 100 ||
             strlen($identity) > 100
         ) {
@@ -170,13 +165,11 @@ class WebController extends Controller
         }
 
         $insertData = [
-            'types_id' => (int)$type,
             'products_id' => (int)$product,
             'name' => $name,
             'id_number' => $id_number,
             'age' => $age,
             'res_address' => $res_address,
-            'current_address' => $current_address,
             'phone' => $phone,
             'identity' => $identity,
             'line_id' => $lineId,

@@ -9,7 +9,7 @@
   <section class="pro">
     <div class="container">
       @if(isset($productData['nav'][$type->id]))
-      <aside class="aside">
+      <aside class="aside speed__side" style="display: none;">
         <nav>
           @foreach($productData['nav'][$type->id] as $data)
             <a href="#{{ $data->name }}">{{ $data->name }}</a>
@@ -32,10 +32,6 @@
             <div class="pro-group">
               <div class="pro-group__header">
                 <div  id="{{ $list['name'] }}" class="pro-group__title">{{ $list['name'] }}</div>
-                <div class="pro-group__card">
-                  <a href="#" style="background-color: #15a725;">方式一：線上客服協助申請</a>
-                  <a href="#" style="background-color: #3353D5;">方式二：24小時線上申請</a>
-                </div>
               </div>
               <div class="pro-group__list">
                 <ul>
