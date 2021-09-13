@@ -46,8 +46,8 @@ class ApplyController extends Controller
         }
 
         $datas = $datas
-            ->join('products as p', 'apply.products_id', '=', 'p.id')
-            ->join('types as t', 'apply.types_id', '=', 't.id')
+            ->leftJoin('products as p', 'apply.products_id', '=', 'p.id')
+            ->leftJoin('types as t', 'apply.types_id', '=', 't.id')
             ->select([
                 'apply.id as id',
                 'apply.name as name',

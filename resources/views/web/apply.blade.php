@@ -46,7 +46,7 @@
               <div class="form">
                 <div class="form__title">選擇購買商品</div>
                 <div class="form__group">
-                  <span class="label">產品類型 <span class="text-red">*</span></span>
+                  <span class="label">產品類型</span>
                   <div class="input">
                     <select name="type">
                       <option>請選擇產品類別</option>
@@ -57,7 +57,7 @@
                   </div>
                 </div>
                 <div class="form__group">
-                  <span class="label">商品 <span class="text-red">*</span></span>
+                  <span class="label">商品</span>
                   <div class="input">
                     <select name="product">
                       <option value="">請選擇商品</option>

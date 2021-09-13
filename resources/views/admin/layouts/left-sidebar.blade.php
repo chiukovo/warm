@@ -12,6 +12,9 @@
                     <a href="/admin/about/list" class="sidebar-link waves-dark"><i class="mdi mdi-account"></i><span class="hide-menu">關於我們</span></a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="/admin/qa/edit" class="sidebar-link waves-dark"><i class="mdi mdi-account"></i><span class="hide-menu">快速辦理QA</span></a>
+                </li>
+                <li class="sidebar-item">
                     <a href="/admin/types/list" class="sidebar-link waves-dark"><i class="mdi mdi-format-list-bulleted-type"></i><span class="hide-menu">產品分類</span></a>
                 </li>
                 <li class="sidebar-item">

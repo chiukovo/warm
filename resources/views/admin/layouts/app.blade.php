@@ -59,7 +59,7 @@
       <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <div class="navbar-header" data-logobg="skin5">
           <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="/admin">
             <b class="logo-icon">
               <a class="sidebartoggler waves-effect waves-dark p-l-20 p-r-20" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a>
             </b>

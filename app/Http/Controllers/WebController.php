@@ -115,8 +115,8 @@ class WebController extends Controller
     {
         $postData = Request::input();
         $ip = Request::ip();
-        $type = $postData['type'] ?? '';
-        $product = $postData['product'] ?? '';
+        $type = $postData['type'] ?? 0;
+        $product = $postData['product'] ?? 0;
         $name = $postData['name'] ?? '';
         $id_number = $postData['id_number'] ?? '';
         $age = $postData['age'] ?? '';
@@ -138,8 +138,6 @@ class WebController extends Controller
 
         //檢查
         if (
-            $type == '' ||
-            $product == '' ||
             $name == '' ||
             $id_number == '' ||
             $age == '' ||
@@ -171,7 +169,7 @@ class WebController extends Controller
             ];
         }
 
-        DB::table('apply')->insert([
+        $insertData = [
             'types_id' => (int)$type,
             'products_id' => (int)$product,
             'name' => $name,
@@ -184,7 +182,9 @@ class WebController extends Controller
             'line_id' => $lineId,
             'ip' => $ip,
             'created_at' => date('Y-m-d H:i:s'),
-        ]);
+        ];
+
+        DB::table('apply')->insert($insertData);
 
         return [
             'status' => 'success',
@@ -218,6 +218,18 @@ class WebController extends Controller
             'products' => $products,
             'types' => $types,
         ]);
+    }
+
+    public function qa()
+    {
+        $qa = DB::table('qa_page')
+            ->where('id', 1)
+            ->first();
+
+        return view('web/qa', [
+            'qa' => $qa,
+        ]);
+
     }
 
     public function about($name)

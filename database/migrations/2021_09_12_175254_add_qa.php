@@ -13,7 +13,18 @@ class AddQa extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('qa_page', function (Blueprint $table) {
+            $table->id();
+            $table->text('content');
+            $table->timestamps();
+        });
+
+        $date = date('Y-m-d H:i:s');
+
+        DB::table('qa_page')->insert([
+            'created_at' => $date,
+        ]);
+
     }
 
     /**
@@ -23,6 +34,6 @@ class AddQa extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('qa_page');
     }
 }

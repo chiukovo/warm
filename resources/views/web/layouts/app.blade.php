@@ -43,7 +43,7 @@
           >
           <div class="nav__inner container">
             @if(showNavMenu())
-            <div class="nav__title">快速導覽</div>
+            <div id="speed_nav" class="nav__title" style="cursor:pointer;">快速導覽</div>
             @endif
             <ul class="nav__list">
               @foreach($productData['headers'] as $header)
@@ -67,6 +67,9 @@
                   </li>
                   @endforeach
                 </ul>
+              </li>
+              <li class="nav__item has-submenu">
+                <a href="/qa" class="nav__link">QA快速初審</a>
               </li>
             </ul>
           </div>
@@ -102,7 +105,7 @@
       </div>
     </footer>
   </div>
-
+<script src="/assets/web/js/jquery-3.6.0.min.js"></script>
   <script src="/assets/web/js/vue.js"></script>
   <script src="/assets/web/js/swiper-bundle.min.js"></script>
   <script>
@@ -138,6 +141,10 @@
           spaceBetween: 10,
         }
       },
+    })
+
+    $('#speed_nav').click(function() {
+      $('#nav__side').toggle();
     })
   </script>
 

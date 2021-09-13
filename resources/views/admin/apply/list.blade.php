@@ -56,8 +56,12 @@
                                 @foreach($datas['data'] as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
-                                    <td>{{ $data->types_name }}</td>
-                                    <td>{{ $data->products_name }}</td>
+                                    <td>
+                                        {{ $data->types_name == null ? '無輸入' : $data->types_name }}
+                                    </td>
+                                    <td>
+                                        {{ $data->products_name == null ? '無輸入' : $data->products_name }}
+                                    </td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->id_number }}</td>
                                     <td>{{ $data->age }}</td>

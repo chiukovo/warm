@@ -5,7 +5,7 @@
   <section class="slider">
     <div class="container">
       <div class="slider__inner">
-        <div class="nav__side">
+        <div id="nav__side" class="nav__side" style="display: none;">
           @foreach(getHeaderData()['nav'] as $nav)
           <div class="nav__list">
             @foreach($nav as $data)

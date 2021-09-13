@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\WebController@index')->name('webIndex');
 Route::get('/refreshCaptcha', 'App\Http\Controllers\WebController@refreshCaptcha');
 Route::get('/about/{name}', 'App\Http\Controllers\WebController@about')->name('webAbout');
+Route::get('/qa', 'App\Http\Controllers\WebController@qa')->name('qa');
 Route::get('/product/{name}', 'App\Http\Controllers\WebController@product')->name('webProduct');
 Route::get('/product/{name}/detail/{id}', 'App\Http\Controllers\WebController@productDetail')->name('webProductDetail');
 Route::get('/apply/{name}/{product}', 'App\Http\Controllers\WebController@apply')->name('webApply');
@@ -55,6 +56,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('about/create', 'App\Http\Controllers\AboutListController@edit')->name('aboutListCreate');
     Route::post('about/doEdit', 'App\Http\Controllers\AboutListController@doEdit');
     Route::delete('about/delete', 'App\Http\Controllers\AboutListController@doDelete');
+
+    Route::get('qa/edit', 'App\Http\Controllers\QAController@edit')->name('QA');
+    Route::post('qa/doEdit', 'App\Http\Controllers\QAController@doEdit');
 
     Route::get('types/list', 'App\Http\Controllers\TypesController@list');
     Route::get('types/list/data', 'App\Http\Controllers\TypesController@listData');
