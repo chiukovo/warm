@@ -191,7 +191,7 @@ class WebController extends Controller
         ];
     }
 
-    public function apply($name, $product)
+    public function apply($nameId, $productId)
     {
         $types = DB::table('types')
             ->where('status', 1)
@@ -213,8 +213,8 @@ class WebController extends Controller
             ->toArray();
 
         return view('web/apply', [
-            'name' => $name,
-            'product' => $product,
+            'nameId' => $nameId,
+            'productId' => $productId,
             'products' => $products,
             'types' => $types,
         ]);

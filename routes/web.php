@@ -20,7 +20,7 @@ Route::get('/about/{name}', 'App\Http\Controllers\WebController@about')->name('w
 Route::get('/qa', 'App\Http\Controllers\WebController@qa')->name('qa');
 Route::get('/product/{name}', 'App\Http\Controllers\WebController@product')->name('webProduct');
 Route::get('/product/{name}/detail/{id}', 'App\Http\Controllers\WebController@productDetail')->name('webProductDetail');
-Route::get('/apply/{name}/{product}', 'App\Http\Controllers\WebController@apply')->name('webApply');
+Route::get('/apply/{nameId}/{productId}', 'App\Http\Controllers\WebController@apply')->name('webApply');
 Route::post('/apply/create', 'App\Http\Controllers\WebController@createApply');
 
 

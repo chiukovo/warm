@@ -51,7 +51,7 @@
                     <select name="type">
                       <option>請選擇產品類別</option>
                       @foreach($types as $type)
-                      <option value="{{ $type->id }}" @if($type->name == $name) selected @endif>{{ $type->name }}</option>
+                      <option value="{{ $type->id }}" @if($type->id == $nameId) selected @endif>{{ $type->name }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -62,7 +62,7 @@
                     <select name="product">
                       <option value="">請選擇商品</option>
                       @foreach($products as $data)
-                      <option value="{{ $data->id }}" @if($data->name == $product) selected @endif>{{ $data->name }}</option>
+                      <option value="{{ $data->id }}" @if($data->id == $productId) selected @endif>{{ $data->name }}</option>
                       @endforeach
                     </select>
                   </div>

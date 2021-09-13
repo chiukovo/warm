@@ -91,7 +91,7 @@
                         {!! $detail->content_detail !!}
                       </div>
                       <div class="block">
-                        <a href="/apply/{{ $type->name }}/{{ $detail->name }}" class="btn-shopping">
+                        <a href="/apply/{{ $type->id }}/{{ $detail->id }}" class="btn-shopping">
                           <div class="icon"><img src="/assets/web/image/icon_shopping.svg"></div>
                           <div class="title">線上申請</div>
                         </a>
