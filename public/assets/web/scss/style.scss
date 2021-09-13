@@ -176,7 +176,7 @@ hr {
 .slider {
   position: relative;
   width: 100%;
-  max-height: 550px;
+  height: 550px;
   .swiper-pagination-bullet {
     background-color: var(--orange);
   }
@@ -294,11 +294,19 @@ hr {
 
 .swiper-container {
   width: 90%;
+  height: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
 .swiper-slide {
   text-align: center;
+  a {
+    display: block;
+    height: 100%;
+  }
+  img {
+    max-height: 100%;
+  }
 }
 .swiper-btn-next, .swiper-btn-prev {
   display: flex;
@@ -551,6 +559,7 @@ hr {
   .slider {
     .swiper-container {
       width: 76%;
+      height: 100%;
       margin: 0 auto;
     }
   }
