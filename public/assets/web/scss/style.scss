@@ -80,13 +80,13 @@ hr {
   .nav__toggle {
     width: 22px;
     height: 44px;
-    background-image: url('/assets/image/icon_menu.svg');
+    background-image: url('/assets/web/image/icon_menu.svg');
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100%;
     cursor: pointer;
     &.show {
-    background-image: url('/assets/image/icon_menu_open.svg');
+    background-image: url('/assets/web/image/icon_menu_open.svg');
     }
   }
   .nav__logo {
@@ -124,7 +124,7 @@ hr {
         display: flex;
         &::after {
           content: '';
-          background-image: url('/assets/image/icon_submenu.svg');
+          background-image: url('/assets/web/image/icon_submenu.svg');
           background-position: center;
           background-size: contain;
           display: block;
@@ -173,23 +173,15 @@ hr {
 .nav__side {
   display: none;
 }
-.slider {
-  position: relative;
-  width: 100%;
-  height: 550px;
-  .swiper-pagination-bullet {
-    background-color: var(--orange);
-  }
-}
 
 
 // ============== Pro List ==============
 .section {
   &.first {
-    background: #aac5d4 url('/assets/image/first_bg1.png') left top/contain no-repeat;
+    background: #aac5d4 url('/assets/web/image/first_bg1.png') left top/contain no-repeat;
   }
   &.second {
-    background: #afd6cf url('/assets/image/first_bg2.png') right top/contain no-repeat;
+    background: #afd6cf url('/assets/web/image/first_bg2.png') right top/contain no-repeat;
     .pro {
       .pro__img {
         background: linear-gradient(180deg, #fefefe, var(--gray-green-light));
@@ -207,7 +199,7 @@ hr {
     }
   }
   &.third {
-    background: #e5d4bd url('/assets/image/first_bg3.png') right top/contain no-repeat;
+    background: #e5d4bd url('/assets/web/image/first_bg3.png') right top/contain no-repeat;
     .pro {
       .pro__img {
         background: linear-gradient(180deg, #fefefe, var(--gray-orange-light));
@@ -292,8 +284,15 @@ hr {
   }
 }
 
+.slider {
+  position: relative;
+  width: 100%;
+  .swiper-pagination-bullet {
+    background-color: var(--orange);
+  }
+}
 .swiper-container {
-  width: 90%;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -501,7 +500,7 @@ hr {
         }
         .has-submenu {
           >.nav__link::after {
-            background-image: url("/assets/image/icon_submenu_white.svg");
+            background-image: url("/assets/web/image/icon_submenu_white.svg");
           }
           .nav__submenu {
             position: absolute;
@@ -526,6 +525,9 @@ hr {
   .main {
     min-height: 600px;
     padding-top: 80px;
+  }
+  .slider {
+    height: 360px;
   }
   .footer__list {
     flex: auto;
@@ -557,8 +559,9 @@ hr {
     }
   }
   .slider {
+    height: 550px;
     .swiper-container {
-      width: 76%;
+      width: 100%;
       height: 100%;
       margin: 0 auto;
     }
