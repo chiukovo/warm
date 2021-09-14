@@ -70,7 +70,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-1 m-t-15">建議售價<span class="text-danger">*</span></label>
+              <label class="col-md-1 m-t-15">建議售價</label>
               <div class="col-sm-12 col-md-10 col-lg-4">
                 <input type="number" name="source_money" class="form-control" value="{{ $sourceMoney }}" placeholder="建議售價">
               </div>

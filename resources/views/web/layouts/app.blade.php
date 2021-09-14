@@ -146,6 +146,19 @@
     $('#speed_nav').click(function() {
       $('.speed__side').toggle();
     })
+
+    $('.has-submenu').click(function(e) {
+      e.preventDefault()   
+      const hasClass = $(this).hasClass('sub-menu')
+      $('.has-submenu').removeClass('sub-menu')
+      if (!hasClass) {
+        $(this).addClass('sub-menu')
+      }
+    })
+
+    $('.nav__submenu .nav__subitem a').click(function(e) {
+      location.href = $(this).attr('href')
+    })
   </script>
 
 </body>

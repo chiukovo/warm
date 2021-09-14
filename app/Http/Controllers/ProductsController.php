@@ -235,7 +235,6 @@ class ProductsController extends Controller
             $name == '' ||
             $imgUrl == '' ||
             $monthMoney == '' ||
-            $sourceMoney == '' ||
             $mainTypes == ''
         ) {
             return response()->json([
