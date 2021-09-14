@@ -8,7 +8,7 @@
   <title>{{ env('APP_NAME') }} </title>
   <link rel="stylesheet" href="/assets/web/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-  <link rel="stylesheet" href="/assets/web/css/style.css?v=1">
+  <link rel="stylesheet" href="/assets/web/css/style.css?v=2">
 </head>
 <body>
   @php
