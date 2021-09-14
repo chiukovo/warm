@@ -18,6 +18,16 @@ class AdminController extends Controller
         $account = $postData['account'] ?? '';
         $password = $postData['password'] ?? '';
 
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = validator()->make(request()->all(), $rules);
+
+        if ($validator->fails()) {
+            return [
+                'status' => 'error',
+                'msg' => '驗證碼錯誤',
+            ];
+        }
+
         if (Auth::attempt([
             'account' => $account,
             'password' => $password

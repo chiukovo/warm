@@ -48,6 +48,12 @@
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user" placeholder="密碼">
                                         </div>
+                                        <div class="form-group" style="text-align: center;">
+                                            <img id="captcha_img" src="{{ captcha_src() }}" onclick="refreshCaptcha()">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="captcha" name="captcha" class="form-control form-control-user" placeholder="驗證碼">
+                                        </div>
                                         <a id="doLogin" href="#" class="btn btn-primary btn-user btn-block">
                                             登入
                                         </a>
@@ -93,12 +99,24 @@
                         if (res.status == 'success') {
                             location.href = "/admin";
                         } else {
-                            toastr.warning(res.msg, '訊息');
+                            toastr.warning(res.msg, '訊息')
+                            refreshCaptcha()
                         }
                     }
                 });
             });
         });
+                
+        function refreshCaptcha() {
+        const captcha = $('#captcha_img');
+
+        $.ajax({
+            url: '/refreshCaptcha',
+            success: function(src) {
+                captcha.attr('src', src)
+            }
+        });
+        }
     </script>
 
 </body>
