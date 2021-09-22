@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
   <title>{{ env('APP_NAME') }}管理者後台</title>
   <!-- Custom CSS -->
+  <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/assets/fonts/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/extra-libs/multicheck/multicheck.css">
   <link href="/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
