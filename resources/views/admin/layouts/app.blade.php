@@ -8,7 +8,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ env('APP_NAME') }}管理者後台</title>
   <!-- Custom CSS -->
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico?v=1">
   <link rel="stylesheet" href="/assets/fonts/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/extra-libs/multicheck/multicheck.css">
   <link href="/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
